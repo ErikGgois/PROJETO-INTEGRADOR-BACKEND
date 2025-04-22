@@ -7,6 +7,7 @@ export class EventosArmazenados{
     deletaEvento(id: string) {
         throw new Error("Method not implemented.");
     }
+    
     atualizaEvento(id: string, novosDados: alteraEventosDTO) {
         throw new Error("Method not implemented.");
     }
