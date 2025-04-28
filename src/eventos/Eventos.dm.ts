@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { UsuarioEntity } from "./usuario.entity";
+import { UsuarioEntity } from "./Eventos.entity";
 
 @Injectable()
 export class EventosArmazenados{
-    #usuarios: EventosEntity[] = [];  
+    #Eventos: EventosEntity[] = [];  
 
     AdicionarEventos(Eventos: EventosEntity){
         this.#Eventos.push(Eventos);

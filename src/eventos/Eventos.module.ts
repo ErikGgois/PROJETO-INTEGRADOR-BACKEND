@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
-import { UsuarioController } from "./usuario.controller";
-import { UsuariosArmazenados } from "../usuario/usuario.dm";
+import { EventosController } from "./Eventos.controller";
+import { EventosArmazenados } from "../eventos/Eventos.dm";
 import { strongPassValidator } from "../usuario/validacao/senha-forte.validator";
 
 

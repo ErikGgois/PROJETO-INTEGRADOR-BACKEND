@@ -1,6 +1,4 @@
 import { IsEmail, IsInt, IsNotEmpty, IsString, MinLength } from "class-validator";
-import { EmailUnico } from "../validacao/email-unico.validator";
-import { SenhaForte } from "../validacao/senha-forte.validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class criaUsuarioDTO{

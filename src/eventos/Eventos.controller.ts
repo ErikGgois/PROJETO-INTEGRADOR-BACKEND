@@ -1,31 +1,30 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
-import { UsuariosArmazenados } from "./usuario.dm";
-import { UsuarioEntity } from "./usuario.entity";
-import { criaUsuarioDTO } from "./dto/usuario.dto";
-
+import { EventosArmazenados } from "./Eventos.dm";
+import { EventosEntity } from "./Eventos.entity";
+import { criaEventosDTO } from "./dto/Eventos.dto";
 import {v4 as uuid} from 'uuid';
-import { ListaUsuarioDTO } from "./dto/consulta.dto";
-import { alteraUsuarioDTO } from "./dto/alteraEventos.dto";
+import { ListaEventosDTO } from "./dto/consulta.dto";
+import { alteraEventosDTO } from "./dto/alteraEventos.dto";
 import { loginUsuarioDTO } from "./dto/loginUsuario.dto";
 import { ApiBadRequestResponse, ApiResponse, ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Eventos')
 @Controller('/Eventos')
-export class UsuarioController{
-    constructor(private readonly clsUsuariosArmazenados: UsuariosArmazenados){}
+export class EventosController{
+    constructor(private readonly clsEventosArmazenados: EventosArmazenados){}
        
     @Post()
     @ApiResponse({status: 201, description:"Retorna que houve sucesso ao criar um Evento."})
     @ApiBadRequestResponse({description: "Retorna que alguma informação não foi informada devidamente."})
-    async criaUsuario(@Body() dadosEventos: criaUsuarioDTO){
+    async criaEventos(@Body() dadosEventos: criaEventosDTO){
         var mensagemErro = '';
 
-        var novoUsuario = new UsuarioEntity(uuid(),dadosEventos.id,
+        var novoUsuario = new EventosEntity(uuid(),dadosEventos.id,
                                             dadosEventos.idCategoria,
                                             dadosEventos.data,
                                             dadosEventos.local,
                                             dadosEventos.qtdParticipantes);
-        this.clsUsuariosArmazenados.AdicionarUsuario(novoEventos);
+        this.clsEventosArmazenados.AdicionarEventos(novoEventos);
 
         var Eventos = {
             dadosEventos : novoEventos,
@@ -35,11 +34,11 @@ export class UsuarioController{
     }
 
     @Get()
-    async listaUsuarios(){
+    async listaEventos(){
         
 
-        const usuariosListados = this.clsUsuariosArmazenados.Usuarios;
-        const listaRetorno = usuariosListados.map(
+        const EventosListados = this.clsEventosArmazenados.Eventos;
+        const listaRetorno = EventosListados.map(
             Eventos => new ListaEventosDTO(
                 Eventos.id,
                 Eventos.idCategoria,
@@ -56,7 +55,7 @@ export class UsuarioController{
     async atualizaEventos(@Param('id') id: string, @Body() novosDados: alteraEventosDTO){
         var messageError = '';
 
-        const EventosAtualizado = await this.clsUsuariosArmazenados.atualizaEventos(id, novosDados)
+        const EventosAtualizado = await this.clsEventosArmazenados.atualizaEventos(id, novosDados)
 
         return{
             Eventos: EventosAtualizado,
