@@ -1,8 +1,8 @@
-export class ListaEventosDTO{
+export class ListaUsuarioDTO{
     constructor(
-        readonly categoria: string,
+        readonly id: string,
+        readonly idCategoria: string,
         readonly data: string,
-        readonly local: string,
-        readonly qtdParticipantes: string,
+        readonly local: string
         ){}
 }

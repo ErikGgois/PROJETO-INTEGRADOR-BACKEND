@@ -1,35 +1,52 @@
 import { IsEmail, IsInt, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+import { EmailUnico } from "../validacao/email-unico.validator";
+import { SenhaForte } from "../validacao/senha-forte.validator";
 import { ApiPropertyOptional } from "@nestjs/swagger";
 
-export class alteraEventosDTO{
+export class alteraEventosDTO {
     @IsString()
-    @IsNotEmpty({message: "categoria Não pode ser vazio"})
+    @IsNotEmpty({ message: "nome Não pode ser vazio" })
+    @IsOptional()
     @ApiPropertyOptional({
-            example: 'Festa',
-            description: 'Esse campo vai ser utilizado como identificação do evento, deve ser informado uma categoria'
-        })
-    categoria:string;
-    
+        example: 'Volei',
+        description: 'Esse campo vai ser utilizado como identificação do Evento, deve ser informado um nome completo'
+    })
+    id: string;
+
+
     @IsString()
-    @IsNotEmpty({message: "data Não pode ser vazio"})
+    @IsNotEmpty({ message: "nome Não pode ser vazio" })
+    @IsOptional()
     @ApiPropertyOptional({
-            example: '2023-10-10',
-            description: 'Esse campo identifica a data do evento, deve ser enviado uma data válida'
-        })
+        example: 'Volei',
+        description: 'Esse campo vai ser utilizado como identificação da categoria do evento'
+    })
+    idCategoria: string;
+
+    @IsString()
+    @IsNotEmpty({ message: "data Não pode ser vazio" })
+    @IsOptional()
+    @ApiPropertyOptional({
+        example: 'Volei',
+        description: 'Esse campo vai ser utilizado para informar a data do evento'
+    })
     data: string;
 
     @IsString()
-    @IsNotEmpty({message: "local Não pode ser vazio"})
+    @IsNotEmpty({ message: "data Não pode ser vazio" })
+    @IsOptional()
     @ApiPropertyOptional({
-            example: 'São Paulo',
-            description: 'Esse campo identifica o local do evento, deve ser enviado um local válido'
-        })
+        example: 'Volei',
+        description: 'Esse campo vai ser utilizado para informar a data do evento'
+    })
     local: string;
 
-    @IsInt()
-     @ApiPropertyOptional({
-            example: 50,
-            description: 'Esse campo identifica a quantidade de participantes do evento, deve ser enviado um numero'
-        })
-    qtdParticipantes: Number;
+    @IsString()
+    @IsNotEmpty({ message: "data Não pode ser vazio" })
+    @IsOptional()
+    @ApiPropertyOptional({
+        example: 'Volei',
+        description: 'Esse campo vai ser utilizado para informar a data do evento'
+    })
+    localqtdParticipantes: string;
 }
