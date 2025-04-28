@@ -1,7 +1,7 @@
 import { IsEmail, IsInt, IsNotEmpty, IsString, MinLength } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
-export class criaUsuarioDTO{
+export class criaEventosDTO{
     @IsString()
     @IsNotEmpty({message: "nome Não pode ser vazio"})
     @ApiProperty({

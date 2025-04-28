@@ -5,7 +5,6 @@ import { criaEventosDTO } from "./dto/Eventos.dto";
 import {v4 as uuid} from 'uuid';
 import { ListaEventosDTO } from "./dto/consulta.dto";
 import { alteraEventosDTO } from "./dto/alteraEventos.dto";
-import { loginUsuarioDTO } from "./dto/loginUsuario.dto";
 import { ApiBadRequestResponse, ApiResponse, ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Eventos')

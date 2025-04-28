@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { UsuarioEntity } from "./Eventos.entity";
+import { EventosEntity } from "./Eventos.entity";
 
 @Injectable()
 export class EventosArmazenados{
