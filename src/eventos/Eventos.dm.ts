@@ -34,11 +34,7 @@ export class EventosArmazenados{
                 }
                 if(chave === 'id'){
                     return
-                }else if(chave === 'senha'){
-                    Eventos.trocarSenha(valor);
-                    return
                 }
-                
 
                 Eventos[chave] = valor;
             }

@@ -18,7 +18,7 @@ export class EventosController{
     async criaEventos(@Body() dadosEventos: criaEventosDTO){
         var mensagemErro = '';
 
-        var novoUsuario = new EventosEntity(uuid(),dadosEventos.id,
+        var novoEventos = new EventosEntity(uuid(),                                            
                                             dadosEventos.idCategoria,
                                             dadosEventos.data,
                                             dadosEventos.local,
