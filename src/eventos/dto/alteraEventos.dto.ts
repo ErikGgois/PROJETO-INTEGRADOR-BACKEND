@@ -31,20 +31,20 @@ export class alteraEventosDTO {
     data: string;
 
     @IsString()
-    @IsNotEmpty({ message: "data Não pode ser vazio" })
+    @IsNotEmpty({ message: "local Não pode ser vazio" })
     @IsOptional()
     @ApiPropertyOptional({
         example: 'Volei',
-        description: 'Esse campo vai ser utilizado para informar a data do evento'
+        description: 'Esse campo vai ser utilizado para informar o local do evento'
     })
     local: string;
 
     @IsString()
-    @IsNotEmpty({ message: "data Não pode ser vazio" })
+    @IsNotEmpty({ message: "quantidade de participantes Não pode ser vazio" })
     @IsOptional()
     @ApiPropertyOptional({
         example: 'Volei',
-        description: 'Esse campo vai ser utilizado para informar a data do evento'
+        description: 'Esse campo vai ser utilizado para informar a quantidade de participantes do evento'
     })
-    localqtdParticipantes: string;
+    qtdParticipantes: string;
 }
