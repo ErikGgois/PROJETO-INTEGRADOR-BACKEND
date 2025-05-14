@@ -2,15 +2,6 @@ import { IsEmail, IsInt, IsNotEmpty, IsOptional, IsString, MinLength } from "cla
 import { ApiPropertyOptional } from "@nestjs/swagger";
 
 export class alteraEventosDTO {
-    @IsString()
-    @IsNotEmpty({ message: "nome Não pode ser vazio" })
-    @IsOptional()
-    @ApiPropertyOptional({
-        example: 'Volei',
-        description: 'Esse campo vai ser utilizado como identificação do Evento, deve ser informado um nome completo'
-    })
-    id: string;
-
 
     @IsString()
     @IsNotEmpty({ message: "nome Não pode ser vazio" })
