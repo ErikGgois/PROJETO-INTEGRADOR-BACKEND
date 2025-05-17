@@ -10,14 +10,14 @@ export class criaUsuarioDTO{
         example: 'Carlos da Silva',
         description: 'Esse campo vai ser utilizado como identificação do usuario, deve ser informado um nome completo'
     })
-    nome:string;
+    NOME:string;
     
     @IsInt()
     @ApiProperty({
         example: 29,
         description: 'Esse campo identifica a idade do usuario, deve ser enviado um numero'
     })
-    idade: Number;
+    IDADE: string;
 
 
     @IsEmail(undefined,{message:"email é inválido"})    
@@ -26,7 +26,7 @@ export class criaUsuarioDTO{
         example: 'jogador@sera.com',
         description: 'Esse campo ira ser o login do usuario, deve ser enviado um email válido e unico'
     })
-    email: string;
+    EMAIL: string;
 
 
     @MinLength(8,{message: "Senha precisa de pelo menos 8 digitos"})
@@ -35,5 +35,5 @@ export class criaUsuarioDTO{
         example: 'Senha@123456',
         description: 'A senha deve ter numeros, letras maiusculas e minusculas, e também caracteres especiais'
     })
-    senha: string; 
+    SENHA: string; 
 }

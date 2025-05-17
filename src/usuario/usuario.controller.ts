@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { UsuariosArmazenados } from "./usuario.dm";
-import { UsuarioEntity } from "./usuario.entity";
+import { USUARIO } from "../usuario/usuario.entity";
 import { criaUsuarioDTO } from "./dto/usuario.dto";
 
 import {v4 as uuid} from 'uuid';
@@ -20,10 +20,10 @@ export class UsuarioController{
     async criaUsuario(@Body() dadosUsuario: criaUsuarioDTO){
         var mensagemErro = '';
 
-        var novoUsuario = new UsuarioEntity(uuid(),dadosUsuario.nome,
-                                            dadosUsuario.idade,
-                                            dadosUsuario.email,
-                                            dadosUsuario.senha);
+        var novoUsuario = new USUARIO(uuid(),dadosUsuario.NOME,
+                                            dadosUsuario.IDADE,
+                                            dadosUsuario.EMAIL,
+                                            dadosUsuario.SENHA);
         this.clsUsuariosArmazenados.AdicionarUsuario(novoUsuario);
 
         var usuario = {

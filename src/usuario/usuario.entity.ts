@@ -1,28 +1,31 @@
 import * as bcrypt from 'bcrypt';
+import { FILES } from 'src/files/files.entity';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
 
-export class UsuarioEntity{
-    id: string;
-    nome: string;
-    idade: Number;
-    email: string;
-    senha: string; 
-
-    constructor(id: string,nome: string,idade: Number,email: string,senha: string){
-        const saltOrRounds = 10;
-
-        this.id = id;
-        this.nome = nome;
-        this.idade = idade;
-        this.email = email;
-        this.senha = bcrypt.hashSync(senha,saltOrRounds);
+    @Entity()
+    export class USUARIO{
+        @PrimaryColumn()
+        ID: string;
+    
+        @Column({length: 255})
+        NOME: string;
+    
+        @Column({length: 255})
+        IDADE: string;
+    
+        @Column({length: 255})
+        EMAIL: string; 
+    
+        @Column({length: 255})
+        SENHA: string; 
+    
+        trocaSenha(SENHA){
+            const saltOrRounds = 10;
+            this.SENHA = bcrypt.hashSync(SENHA,saltOrRounds)
+        }
+    
+        login(SENHA){
+            return bcrypt.compareSync(SENHA,this.SENHA);
+        }
     }
-
-    trocarSenha(senhaNova){
-        const saltOrRounds = 10;
-        this.senha = bcrypt.hashSync(senhaNova,saltOrRounds);
-    }
-
-    login(senha){
-        return bcrypt.compareSync(senha,this.senha);
-    }
-}
+    
