@@ -73,7 +73,7 @@ export class UsuarioController{
 
     @Post('/login')
     async login(@Body() dadosLogin: loginUsuarioDTO){
-        var login = this.clsUsuariosArmazenados.validarLogin(dadosLogin.email,dadosLogin.senha);
+        var login = this.clsUsuariosArmazenados.validarLogin(dadosLogin.EMAIL,dadosLogin.SENHA);
         return {
             status: login.login,
             usuario: login.login?login.usuario:null,

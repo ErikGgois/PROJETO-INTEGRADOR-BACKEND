@@ -75,14 +75,14 @@ export class USUARIOService {
     return objeto;
   }
 
-  async Login(email: string, senha: string) {
+  async Login(EMAIL: string, SENHA: string) {
     //primeiro é pesquisado o usuário por meio do email
-    const possivelUsuario = await this.localizarEmail(email)
+    const possivelUsuario = await this.localizarEmail(EMAIL)
 
     return {
       //aqui é validada a senha, caso a senha esteja correta, é retornado os dados do usuário e também o status (true para correto, false para incorreto)
-      usuarios: possivelUsuario ? (possivelUsuario.login(senha) ? possivelUsuario : null) : null,
-      status: possivelUsuario ? possivelUsuario.login(senha): false
+      usuarios: possivelUsuario ? (possivelUsuario.login(SENHA) ? possivelUsuario : null) : null,
+      status: possivelUsuario ? possivelUsuario.login(SENHA): false
     };
   }
 
@@ -93,8 +93,8 @@ export class USUARIOService {
   }
 
 
-  async remover(id: string): Promise<RetornoObjDTO> {
-    const usuario = await this.localizarID(id);
+  async remover(ID: string): Promise<RetornoObjDTO> {
+    const usuario = await this.localizarID(ID);
 
     return this.usuarioRepository.remove(usuario)
       .then((result) => {
