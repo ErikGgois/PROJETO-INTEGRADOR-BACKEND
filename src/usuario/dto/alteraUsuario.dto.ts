@@ -13,13 +13,13 @@ export class alteraUsuarioDTO{
         })
     NOME:string;
     
-    @IsInt()
+    @IsString()
     @IsOptional()
      @ApiPropertyOptional({
             example: 29,
             description: 'Esse campo identifica a idade do usuario, deve ser enviado um numero'
         })
-    IDADE: Number;
+    IDADE: string;
 
     @IsEmail(undefined,{message:"email é inválido"})    
     @EmailUnico({message:"email já cadastrado. Tente novamente"})

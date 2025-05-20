@@ -12,7 +12,7 @@ export class criaUsuarioDTO{
     })
     NOME:string;
     
-    @IsInt()
+    @IsString()
     @ApiProperty({
         example: 29,
         description: 'Esse campo identifica a idade do usuario, deve ser enviado um numero'

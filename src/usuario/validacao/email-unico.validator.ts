@@ -1,29 +1,36 @@
-import { registerDecorator, ValidationArguments, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator";
-import { UsuariosArmazenados } from "../usuario.dm";
-import { Injectable } from "@nestjs/common";
-
-
-@Injectable()
-@ValidatorConstraint({async:true})
-export class EmailUnicoValidator implements ValidatorConstraintInterface{
-    constructor(private clsUsuariosArmazenados:UsuariosArmazenados){}
-
-    async validate(value: any, validationArguments?: ValidationArguments): Promise<boolean> {
-        const validarEmail = await this.clsUsuariosArmazenados.validaEmail(value);
-        return !validarEmail;
+import {
+    ValidatorConstraint,
+    ValidatorConstraintInterface,
+    ValidationArguments,
+    registerDecorator,
+    ValidationOptions,
+  } from 'class-validator';
+  import { Injectable } from '@nestjs/common';
+  import { USUARIOService } from '../usuario.service';
+  
+  @Injectable()
+  @ValidatorConstraint({ async: true })
+  export class EmailUnicoValidator implements ValidatorConstraintInterface {
+    constructor(private readonly usuarioService: USUARIOService) {}
+  
+    async validate(value: string, args: ValidationArguments): Promise<boolean> {
+      const usuario = await this.usuarioService.buscarPorEmail(value);
+      return !usuario;
     }
-    
-}
-
-
-export const EmailUnico = (opcaoValidacao: ValidationOptions)=>{
-    return (objeto: Object, propriedade: string) => {
-        registerDecorator({
-            target: objeto.constructor,
-            propertyName: propriedade,
-            options: opcaoValidacao,
-            constraints: [],
-            validator: EmailUnicoValidator,
-        })
+  
+    defaultMessage(args: ValidationArguments) {
+      return 'E-mail já está em uso.';
     }
-}
+  }
+  
+  export function EmailUnico(validationOptions?: ValidationOptions) {
+    return function (object: Object, propertyName: string) {
+      registerDecorator({
+        target: object.constructor,
+        propertyName: propertyName,
+        options: validationOptions,
+        constraints: [],
+        validator: EmailUnicoValidator,
+      });
+    };
+  }
