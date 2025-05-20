@@ -1,58 +1,58 @@
-import { Injectable } from "@nestjs/common";
-import { EventosEntity } from "./Eventos.entity";
+// import { Injectable } from "@nestjs/common";
+// import { EventosEntity } from "./Eventos.entity";
 
-@Injectable()
-export class EventosArmazenados{
-    #Eventos: EventosEntity[] = [];  
+// @Injectable()
+// export class EventosArmazenados{
+//     #Eventos: EventosEntity[] = [];  
 
-    AdicionarEventos(Eventos: EventosEntity){
-        this.#Eventos.push(Eventos);
-    }
+//     AdicionarEventos(Eventos: EventosEntity){
+//         this.#Eventos.push(Eventos);
+//     }
 
-    get Eventos(){        
-        return this.#Eventos;
-    }
+//     get Eventos(){        
+//         return this.#Eventos;
+//     }
 
-    async removeEventos(id: string){
-        const Eventos = this.buscaPorID(id);
+//     async removeEventos(id: string){
+//         const Eventos = this.buscaPorID(id);
 
-        this.#Eventos = this.#Eventos.filter(
-            EventosSalvo => EventosSalvo.id !== id
-        )
+//         this.#Eventos = this.#Eventos.filter(
+//             EventosSalvo => EventosSalvo.id !== id
+//         )
 
-        return Eventos;
-    }
+//         return Eventos;
+//     }
 
 
-    atualizaEventos(id: string, dadosAtualizacao: Partial<EventosEntity>){
-        const Eventos = this.buscaPorID(id);
+//     atualizaEventos(id: string, dadosAtualizacao: Partial<EventosEntity>){
+//         const Eventos = this.buscaPorID(id);
 
-        Object.entries(dadosAtualizacao).forEach(
-            ([chave,valor]) => {
-                if (valor === undefined){
-                    return
-                }
-                if(chave === 'id'){
-                    return
-                }
+//         Object.entries(dadosAtualizacao).forEach(
+//             ([chave,valor]) => {
+//                 if (valor === undefined){
+//                     return
+//                 }
+//                 if(chave === 'id'){
+//                     return
+//                 }
 
-                Eventos[chave] = valor;
-            }
-        )
+//                 Eventos[chave] = valor;
+//             }
+//         )
 
-        return Eventos;
-    }
+//         return Eventos;
+//     }
 
-    private buscaPorID(id: string){
-        const possivelEventos =     this.#Eventos.find(
-            EventosSalvo => EventosSalvo.id === id
-        )
+//     private buscaPorID(id: string){
+//         const possivelEventos =     this.#Eventos.find(
+//             EventosSalvo => EventosSalvo.id === id
+//         )
 
-        if (!possivelEventos){
-            throw new Error('Evento nao encontrado')
-        }
+//         if (!possivelEventos){
+//             throw new Error('Evento nao encontrado')
+//         }
         
-        return possivelEventos;
-    }
+//         return possivelEventos;
+//     }
 
-}
+// }

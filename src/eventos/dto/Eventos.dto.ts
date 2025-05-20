@@ -2,6 +2,9 @@ import { IsEmail, IsInt, IsNotEmpty, IsString, MinLength } from "class-validator
 import { ApiProperty } from "@nestjs/swagger";
 
 export class criaEventosDTO{
+  SENHA(SENHA: any) {
+    throw new Error('Method not implemented.');
+  }
     
     @IsString()
     @IsNotEmpty({message: "nome Não pode ser vazio"})
@@ -9,7 +12,7 @@ export class criaEventosDTO{
         example: 'Volei',
         description: 'Esse campo vai ser utilizado como identificação do evento, deve ser informado um nome completo'
     })
-    idCategoria:string;
+    IDCATEGORIA:string;
 
     @IsString()
     @IsNotEmpty({message: "nome Não pode ser vazio"})
@@ -17,7 +20,7 @@ export class criaEventosDTO{
         example: '25/07/2025',
         description: 'Esse campo vai ser utilizado para informar a data do evento'
     })
-    data:string;
+    DATA:string;
 
     @IsString()
     @IsNotEmpty({message: "nome Não pode ser vazio"})
@@ -25,7 +28,7 @@ export class criaEventosDTO{
         example: 'Saquarema',
         description: 'Esse campo vai ser utilizado para informar o local do evento'
     })
-    local:string;
+    LOCAL:string;
 
     @IsString()
     @IsNotEmpty({message: "nome Não pode ser vazio"})
@@ -33,7 +36,10 @@ export class criaEventosDTO{
         example: '12',
         description: 'Esse campo vai ser utilizado para informar quantos participantes tera no evento'
     })
-    qtdParticipantes:string;
+    QTDPARTICIPANTES:string;
+  NOME: any;
+  IDADE: any;
+  EMAIL: any;
 
 
 
