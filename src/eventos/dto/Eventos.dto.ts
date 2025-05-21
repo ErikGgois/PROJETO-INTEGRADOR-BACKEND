@@ -1,10 +1,7 @@
-import { IsEmail, IsInt, IsNotEmpty, IsString, MinLength } from "class-validator";
+import {IsNotEmpty, IsString,} from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class criaEventosDTO{
-  SENHA(SENHA: any) {
-    throw new Error('Method not implemented.');
-  }
     
     @IsString()
     @IsNotEmpty({message: "nome Não pode ser vazio"})

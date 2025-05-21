@@ -20,8 +20,8 @@ export class EVENTOService {
   }
 
   async listar(): Promise<EVENTOS[]> {
-  return await this.eventosRepository.find();
-}
+    return await this.eventosRepository.find();
+  }
 
   async inserir(dados: criaEventosDTO): Promise<RetornoCadastroDTO> {
     let eventos = new EVENTOS();
@@ -29,9 +29,6 @@ export class EVENTOService {
     eventos.NOME = dados.NOME;
     eventos.IDADE = dados.IDADE;
 
-    eventos.EMAIL = dados.EMAIL;
-    eventos.trocaSenha(dados.SENHA);
-    
     return this.eventosRepository.save(eventos)
       .then((result) => {
         return <RetornoCadastroDTO>{
@@ -44,7 +41,7 @@ export class EVENTOService {
           id: "",
           message: "Houve um erro ao cadastrar." + error.message
         };
-    })
+      })
   }
 
   async localizarID(ID: string): Promise<EVENTOS> {
@@ -55,7 +52,7 @@ export class EVENTOService {
     });
 
     if (!objeto) {
-        throw new Error(`EVENTO com ID ${ID} não encontrado`);
+      throw new Error(`EVENTO com ID ${ID} não encontrado`);
     }
 
     return objeto;
@@ -88,7 +85,7 @@ export class EVENTOService {
         if (chave === 'ID') {
           return;
         }
-        else{
+        else {
           eventos[chave] = valor;
         }
       }
@@ -107,7 +104,7 @@ export class EVENTOService {
           message: "Houve um erro ao alterar." + error.message
         };
       });
-    }
+  }
 
 
 }
