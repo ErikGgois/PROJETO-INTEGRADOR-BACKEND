@@ -1,8 +1,9 @@
 
-import { IsEmail, IsInt, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator";
+import {IsNotEmpty, IsOptional, IsString, } from "class-validator";
 import { ApiPropertyOptional } from "@nestjs/swagger";
 
 export class alteraEventosDTO{
+
     @IsString()
     @IsNotEmpty({message: "nome Não pode ser vazio"})
     @IsOptional()

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class EVENTOS {
@@ -16,8 +16,5 @@ export class EVENTOS {
 
   @Column({ length: 255 })
   QTDPARTICIPANTES: string;
-  NOME: any;
-  IDADE: any;
-  EMAIL: any;
 
 }

@@ -34,10 +34,5 @@ export class criaEventosDTO{
         description: 'Esse campo vai ser utilizado para informar quantos participantes tera no evento'
     })
     QTDPARTICIPANTES:string;
-  NOME: any;
-  IDADE: any;
-  EMAIL: any;
-
-
 
 }

@@ -26,9 +26,6 @@ export class EVENTOService {
   async inserir(dados: criaEventosDTO): Promise<RetornoCadastroDTO> {
     let eventos = new EVENTOS();
     eventos.ID = uuid();
-    eventos.NOME = dados.NOME;
-    eventos.IDADE = dados.IDADE;
-
     return this.eventosRepository.save(eventos)
       .then((result) => {
         return <RetornoCadastroDTO>{
