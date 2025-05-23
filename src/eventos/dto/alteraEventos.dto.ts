@@ -8,7 +8,7 @@ export class alteraEventosDTO{
     @IsNotEmpty({message: "nome Não pode ser vazio"})
     @IsOptional()
     @ApiPropertyOptional({
-            example: 'Carlos Alberto',
+            example: 'volei',
             description: 'Esse campo vai ser utilizado como identificação do esporte, deve ser informado um nome completo'
         })
     IDCATEGORIA:string;
