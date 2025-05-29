@@ -41,6 +41,7 @@ export class EventosController{
     async retornaEventosId(@Param('ID') ID:string){
         var eventosListados = await this.eventosService.localizarID(ID);
         const ListaRetorno = new ListaEventosDTO(
+                                                eventosListados.ID,
                                                 eventosListados.IDCATEGORIA,
                                                 eventosListados.DATA,
                                                 eventosListados.LOCAL,
@@ -58,6 +59,7 @@ export class EventosController{
         var eventosListados = await this.eventosService.listar();
         const ListaRetorno = eventosListados.map(
             eventos => new ListaEventosDTO(
+                eventos.ID,
                 eventos.IDCATEGORIA,
                 eventos.DATA,
                 eventos.LOCAL,
